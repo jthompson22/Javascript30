@@ -41,14 +41,33 @@
       text-decoration: none;
     }
 
+  
   </style>
-
-  <ul id="bands"></ul>
-
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+bands.sort(function(a,b){
+  function ourSort(s){
+    return s.replace(/The|A|An|We/, '').trim();
+  }
 
+  return ourSort(a).localeCompare(ourSort(b));
+
+}); 
+
+const ul = document.createElement('ul');
+ul.setAttribute('id', 'bands');
+bands.forEach(element => {
+  const li = document.createElement('li');
+  li.innerHTML = element; 
+  ul.appendChild(li);
+});
+
+document.body.appendChild(ul);
+
+
+
+console.log(bands);
 </script>
 
 </body>
